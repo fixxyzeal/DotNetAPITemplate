@@ -11,7 +11,7 @@ namespace BL.Cryptography
                 0x09, 0x78, 0x11, 0x99, 0xd1, 0x14, 0x98, 0x16
             };
 
-        private readonly string passPhase = "52_^QcZ{{=6=CF?7";
+        private readonly string passPhase = Environment.GetEnvironmentVariable("PassPhase") ?? string.Empty;
 
         public async Task<byte[]> EncryptAsync(string plainText)
         {

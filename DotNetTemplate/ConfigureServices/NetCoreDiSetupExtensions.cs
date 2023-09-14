@@ -7,15 +7,16 @@ namespace DotNetTemplate.ConfigureServices
     {
         public static void RegisterServiceLayerDi(this IServiceCollection services)
         {
-            var refer = Assembly.GetEntryAssembly()?.GetReferencedAssemblies().First(x => x.Name == "BL");
+            // Get Business Logic Library Assembly
+            var blRefer = Assembly.GetEntryAssembly()?.GetReferencedAssemblies().First(x => x.Name == "BL");
 
-            if (refer == null)
-                throw new ArgumentException(nameof(refer));
+            if (blRefer == null)
+                throw new ArgumentException(nameof(blRefer));
 
             var assembliesToScan = new[]
             {
               Assembly.GetExecutingAssembly(),
-              Assembly.Load(refer),
+              Assembly.Load(blRefer),
             };
 
             // Auto Register Implemented Interfaces with Name End with "Service"

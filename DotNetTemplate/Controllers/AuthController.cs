@@ -1,4 +1,5 @@
 using BL.Cryptography;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetTemplate.Controllers
@@ -19,6 +20,14 @@ namespace DotNetTemplate.Controllers
         public async Task<IActionResult> Login()
         {
             return GenerateResponse(await _aesCryptographyService.EncryptAsync("test"), true, "test");
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("getclaim")]
+        public async Task<IActionResult> GetClaimInformation()
+        {
+            return GenerateResponse(await _aesCryptographyService.DecryptAsync(new byte[] { }), true, "test");
         }
     }
 }
