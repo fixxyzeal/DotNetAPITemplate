@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTemplate", "DotNetTemplate\DotNetTemplate.csproj", "{5491FCB4-DD88-4450-A078-EC233416E39F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTemplate", "DotNetTemplate\DotNetTemplate.csproj", "{5491FCB4-DD88-4450-A078-EC233416E39F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{B0DE0B97-F746-4410-B3F3-44CF212F94AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{B0DE0B97-F746-4410-B3F3-44CF212F94AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{D461FA9F-A06D-49BA-A03A-41A6994C36C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{D461FA9F-A06D-49BA-A03A-41A6994C36C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{F0EFCDC0-B2E0-4D5C-BF5E-9F5A88F5CE1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D461FA9F-A06D-49BA-A03A-41A6994C36C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D461FA9F-A06D-49BA-A03A-41A6994C36C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D461FA9F-A06D-49BA-A03A-41A6994C36C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0EFCDC0-B2E0-4D5C-BF5E-9F5A88F5CE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0EFCDC0-B2E0-4D5C-BF5E-9F5A88F5CE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0EFCDC0-B2E0-4D5C-BF5E-9F5A88F5CE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0EFCDC0-B2E0-4D5C-BF5E-9F5A88F5CE1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

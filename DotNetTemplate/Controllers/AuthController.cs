@@ -1,6 +1,9 @@
-using BL.Cryptography;
+using BL.Auth;
+using BL.FormModels;
+using BL.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace DotNetTemplate.Controllers
 {
@@ -8,26 +11,27 @@ namespace DotNetTemplate.Controllers
     [Route("[controller]")]
     public class AuthController : BaseController
     {
-        private readonly IAesCryptographyService _aesCryptographyService;
+        private readonly IAuthService _authService;
 
-        public AuthController(IAesCryptographyService aesCryptographyService)
+        public AuthController(IAuthService authService)
         {
-            _aesCryptographyService = aesCryptographyService;
+            _authService = authService;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login(LoginForm loginForm)
         {
-            return GenerateResponse(await _aesCryptographyService.EncryptAsync("test"), true, "test");
+            return GenerateResponse(await _authService.Authentication(loginForm));
         }
 
         [Authorize]
         [HttpPost]
         [Route("getclaim")]
-        public async Task<IActionResult> GetClaimInformation()
+        public IActionResult GetClaimInformation()
         {
-            return GenerateResponse(await _aesCryptographyService.DecryptAsync(new byte[] { }), true, "test");
+            return GenerateResponse(new ResultViewModel() { HttpStatusCode = (int)HttpStatusCode.OK, Message = "OK", Success = true });
         }
     }
 }

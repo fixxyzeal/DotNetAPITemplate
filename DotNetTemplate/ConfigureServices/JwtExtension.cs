@@ -21,8 +21,8 @@ namespace DotNetTemplate.ConfigureServices
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWTKEY") ?? string.Empty)),
-                    ValidateIssuer = true,
-                    ValidateAudience = true
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 };
             });
         }

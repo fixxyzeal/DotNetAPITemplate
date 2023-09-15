@@ -1,3 +1,4 @@
+using BL.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetTemplate.Controllers
@@ -11,15 +12,8 @@ namespace DotNetTemplate.Controllers
         }
 
         // Function to generate dynamic response
-        protected IActionResult GenerateResponse(object data, bool isSuccess = true, string message = "")
+        protected IActionResult GenerateResponse(ResultViewModel response)
         {
-            var response = new
-            {
-                Success = isSuccess,
-                Message = message,
-                Data = data
-            };
-
             if (response.Success)
             {
                 return Ok(response);

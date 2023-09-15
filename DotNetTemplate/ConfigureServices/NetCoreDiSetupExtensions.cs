@@ -16,12 +16,12 @@ namespace DotNetTemplate.ConfigureServices
             var assembliesToScan = new[]
             {
               Assembly.GetExecutingAssembly(),
-              Assembly.Load(blRefer),
+              Assembly.Load(blRefer)
             };
 
             // Auto Register Implemented Interfaces with Name End with "Service"
             services.RegisterAssemblyPublicNonGenericClasses(assembliesToScan)
-            .Where(c => c.Name.EndsWith("Service"))
+            .Where(c => c.Name.EndsWith("Service") || c.Name.EndsWith("Repository"))
             .AsPublicImplementedInterfaces(ServiceLifetime.Scoped);
         }
     }
