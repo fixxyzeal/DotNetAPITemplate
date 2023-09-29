@@ -53,7 +53,7 @@ namespace BL.Auth
                         new Claim(ClaimTypes.Sid, user.UserName ?? string.Empty),
                     }),
                     Expires = DateTime.UtcNow.AddHours(1),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature),
                     Issuer = "DotNetAPITemplate",
                 };
 

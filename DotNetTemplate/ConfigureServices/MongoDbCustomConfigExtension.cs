@@ -13,9 +13,6 @@ namespace DotNetTemplate.ConfigureServices
             {
                 return new MongoClient(Environment.GetEnvironmentVariable("MongoConnection") ?? string.Empty);
             });
-
-            // Add Repositories
-            services.AddSingleton<IUserRepository, UserRepository>();
         }
     }
 }

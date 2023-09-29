@@ -1,5 +1,8 @@
 using DotNetTemplate.ConfigureServices;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +32,14 @@ builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
 // Config Swagger Custom Template
 builder.Services.ConfigSwagger();
 
+// Add Health Check + DB Health Check
+builder.Services.AddHealthChecks()
+       .AddMongoDb(
+            name: "mongodb",
+            mongodbConnectionString: Environment.GetEnvironmentVariable("MongoConnection") ?? string.Empty,
+            failureStatus: HealthStatus.Unhealthy, // Set the status for a failed health check
+            tags: new[] { "mongodb" }); // Optional tags for organizing health checks
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,4 +55,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.MapHealthChecks("/hc", new HealthCheckOptions
+{
+    // Use the custom response writer
+    ResponseWriter = MultiHealthCheckResponseWriter.WriteResponse,
+});
+
+await app.RunAsync();
