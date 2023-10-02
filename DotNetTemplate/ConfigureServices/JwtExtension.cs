@@ -8,6 +8,11 @@ namespace DotNetTemplate.ConfigureServices
     {
         public static void ConfigJWT(this IServiceCollection services)
         {
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("JWTKEY")))
+            {
+                throw new ArgumentNullException(Environment.GetEnvironmentVariable("JWTKEY"), "Missing JWT Key Please Set in .ENV File or Environment Variable");
+            }
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -16,9 +16,9 @@ namespace DotNetTemplate.ConfigureServices
             var dalRefer = loadedAssemblies?.First(x => x.Name == "DAL");
 
             if (blRefer == null)
-                throw new ArgumentException(nameof(blRefer));
+                throw new ArgumentException("Cannot Load BL Project Assemnbly");
             if (dalRefer == null)
-                throw new ArgumentException(nameof(dalRefer));
+                throw new ArgumentException("Cannot Load DAL Project Assembly");
 
             var assembliesToScan = new[]
             {

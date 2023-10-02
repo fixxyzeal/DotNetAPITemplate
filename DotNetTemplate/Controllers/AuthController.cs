@@ -1,11 +1,10 @@
 using BL.Auth;
 using BL.FormModels;
 using BL.ViewModels;
-using DAL.Models;
+using DotNetTemplate.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using System.Security.Claims;
 
 namespace DotNetTemplate.Controllers
 {
@@ -33,11 +32,7 @@ namespace DotNetTemplate.Controllers
         [Route("getclaim")]
         public IActionResult GetClaimInformation()
         {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-
-            IEnumerable<Claim> claims = identity.Claims;
-
-            return GenerateResponse(new ResultViewModel() { HttpStatusCode = (int)HttpStatusCode.OK, Message = "OK", Success = true, Data = new User() { UserName = claims.First(x => x.Type == ClaimTypes.Sid).Value } });
+            return GenerateResponse(new ResultViewModel() { HttpStatusCode = (int)HttpStatusCode.OK, Message = "OK", Success = true, Data = GetAuthenticatedClaimHelper.GetAuthenticatedClaim(this.HttpContext) });
         }
     }
 }

@@ -51,6 +51,7 @@ namespace BL.Auth
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                         new Claim(ClaimTypes.Sid, user.UserName ?? string.Empty),
+                        new Claim(ClaimTypes.Email, user.Email ?? string.Empty)
                     }),
                     Expires = DateTime.UtcNow.AddHours(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature),

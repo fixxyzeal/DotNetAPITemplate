@@ -13,7 +13,12 @@ namespace DotNetTemplate.ConfigureServices
                 {
                     Version = "v1",
                     Title = "DotNet Template Authentication API",
-                    Description = "ASP.NET 7 Web API"
+                    Description = "ASP.NET 7 Web API",
+                    Contact = new OpenApiContact()
+                    {
+                        Name = "Chanchai Jeimvijack (Fix)",
+                        Email = "kewell5@live.com"
+                    }
                 });
                 // To Enable authorization using Swagger (JWT)
                 swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
